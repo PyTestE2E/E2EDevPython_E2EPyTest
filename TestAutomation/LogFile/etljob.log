@@ -1,0 +1,9 @@
+2025-11-25 15:04:56,756 - CommonUtilities.Utilities - INFO - No duplicate keys found.
+2025-11-25 15:04:56,764 - CommonUtilities.Utilities - INFO - No NULL values in sales_id.
+2025-11-25 15:04:56,769 - CommonUtilities.Utilities - INFO - Row count check passed.
+2025-11-25 15:04:56,775 - CommonUtilities.Utilities - INFO - Referential integrity OK.
+2025-11-25 15:04:56,777 - CommonUtilities.Utilities - INFO - File exists: TestData/sales_data.csv
+2025-11-25 15:04:56,778 - CommonUtilities.Utilities - INFO - File has data: TestData/sales_data.csv
+2025-11-25 15:04:56,781 - CommonUtilities.Utilities - INFO - No duplicate rows found.
+2025-11-25 15:04:56,783 - CommonUtilities.Utilities - INFO - No duplicate values in column sales_id.
+2025-11-25 15:04:56,785 - CommonUtilities.Utilities - INFO - No NULL values found.

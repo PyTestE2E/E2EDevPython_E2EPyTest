@@ -1,0 +1,399 @@
+2025-11-21 14:48:38,346 - CommonUtilities.Utils - INFO - Extracting Sales Data File to Load Stage Table
+2025-11-21 14:48:38,372 - CommonUtilities.Utils - INFO - Extracting product Data File to Load Stage Table
+2025-11-21 14:48:38,385 - CommonUtilities.Utils - INFO - Loaded product Data File Load Stage Table Complete
+2025-11-21 14:48:38,385 - CommonUtilities.Utils - INFO - Extracting supplier Data File to Load Stage Table
+2025-11-21 14:48:38,399 - CommonUtilities.Utils - INFO - Loaded supplier Data File Load Stage Table Complete
+2025-11-21 14:48:38,399 - CommonUtilities.Utils - INFO - Extracting inventory Data File to Load Stage Table
+2025-11-21 14:48:38,418 - CommonUtilities.Utils - INFO - Loaded inventory Data File Load Stage Table Complete
+2025-11-21 14:48:38,418 - CommonUtilities.Utils - INFO - Extracting stores Data File to Load Stage Table
+2025-11-21 14:48:38,435 - CommonUtilities.Utils - INFO - Loaded stores Data File Load Stage Table Complete
+2025-11-21 14:48:51,928 - CommonUtilities.Utils - INFO - Sales Data Transformation started 
+2025-11-21 14:48:51,962 - CommonUtilities.Utils - INFO - Sales Data Transformation completed 
+2025-11-21 14:48:51,962 - CommonUtilities.Utils - INFO - Router Transformation for Low Sales Data started 
+2025-11-21 14:48:51,975 - CommonUtilities.Utils - INFO - Router Transformation for Low Sales completed
+2025-11-21 14:48:51,975 - CommonUtilities.Utils - INFO - Transformation for high Sales Data started 
+2025-11-21 14:48:51,989 - CommonUtilities.Utils - INFO - Transformation for high Sales  completed
+2025-11-21 14:48:51,989 - CommonUtilities.Utils - INFO - Transformation for agg  Sales Data started 
+2025-11-21 14:48:52,002 - CommonUtilities.Utils - INFO - Transformation for agg  Sales Data completed
+2025-11-21 14:48:52,002 - CommonUtilities.Utils - INFO - Inventory aggregator  summary started 
+2025-11-21 14:48:52,014 - CommonUtilities.Utils - INFO - Inventory aggregator  summary completed
+2025-11-21 14:48:52,014 - CommonUtilities.Utils - INFO - transform_sales_store_product started 
+2025-11-21 14:48:52,030 - CommonUtilities.Utils - INFO - transform_sales_store_product completed
+2025-11-21 14:49:10,840 - CommonUtilities.Utils - INFO - Loading to fact-sales table  started....
+2025-11-21 14:49:10,840 - CommonUtilities.Utils - INFO -  insert into targetdb.fact_sales(sales_id,product_id,store_id,quantity,total_sales,sale_date) select sales_id,product_id,store_id,quantity,total_sales_amount,sale_date from stagedb.sales_with_details
+2025-11-21 14:49:10,843 - CommonUtilities.Utils - INFO - Loading to fact-sales table completed....
+2025-11-21 14:49:10,843 - CommonUtilities.Utils - INFO - Loading to fact_inventory_table  started....
+2025-11-21 14:49:10,843 - CommonUtilities.Utils - INFO - insert into targetdb.fact_inventory (product_id , store_id , quantity_on_hand,last_updated) select product_id , store_id , quantity_on_hand,last_updated  from stagedb.stage_inventories
+2025-11-21 14:49:10,845 - CommonUtilities.Utils - INFO - Loading to fact_inventory_table table completed....
+2025-11-21 14:49:10,846 - CommonUtilities.Utils - INFO - Loading to load_fact_monthly_sales_summary  started....
+2025-11-21 14:49:10,846 - CommonUtilities.Utils - INFO - insert into targetdb.fact_monthly_sales_summary (product_id , month , year ,total_sales) select product_id , month , year ,totalsales  from stagedb.monthly_sales_summary
+2025-11-21 14:49:10,866 - CommonUtilities.Utils - INFO - Loading to load_fact_monthly_sales_summary table completed....
+2025-11-21 14:49:10,866 - CommonUtilities.Utils - INFO - Loading to fact_inventory_levels_by_store  started....
+2025-11-21 14:49:10,866 - CommonUtilities.Utils - INFO - insert into targetdb.inventory_levels_by_store (store_id,total_inventory) select  store_id,total_inventory from stagedb.inventory_agg
+2025-11-21 14:49:10,868 - CommonUtilities.Utils - INFO - Loading to fact_inventory_levels_by_store completed....
+2025-11-21 15:17:28,915 - CommonUtilities.Utils - INFO - Extracting Sales Data File to Load Stage Table
+2025-11-21 15:17:28,941 - CommonUtilities.Utils - INFO - Extracting product Data File to Load Stage Table
+2025-11-21 15:17:28,954 - CommonUtilities.Utils - INFO - Loaded product Data File Load Stage Table Complete
+2025-11-21 15:17:28,954 - CommonUtilities.Utils - INFO - Extracting supplier Data File to Load Stage Table
+2025-11-21 15:17:28,969 - CommonUtilities.Utils - INFO - Loaded supplier Data File Load Stage Table Complete
+2025-11-21 15:17:28,969 - CommonUtilities.Utils - INFO - Extracting inventory Data File to Load Stage Table
+2025-11-21 15:17:28,989 - CommonUtilities.Utils - INFO - Loaded inventory Data File Load Stage Table Complete
+2025-11-21 15:17:28,989 - CommonUtilities.Utils - INFO - Extracting stores Data File to Load Stage Table
+2025-11-21 15:17:29,015 - CommonUtilities.Utils - INFO - Loaded stores Data File Load Stage Table Complete
+2025-11-21 15:18:16,866 - CommonUtilities.Utils - INFO - Sales Data Transformation started 
+2025-11-21 15:18:16,904 - CommonUtilities.Utils - INFO - Sales Data Transformation completed 
+2025-11-21 15:18:16,904 - CommonUtilities.Utils - INFO - Router Transformation for Low Sales Data started 
+2025-11-21 15:18:16,917 - CommonUtilities.Utils - INFO - Router Transformation for Low Sales completed
+2025-11-21 15:18:16,917 - CommonUtilities.Utils - INFO - Transformation for high Sales Data started 
+2025-11-21 15:18:16,930 - CommonUtilities.Utils - INFO - Transformation for high Sales  completed
+2025-11-21 15:18:16,931 - CommonUtilities.Utils - INFO - Transformation for agg  Sales Data started 
+2025-11-21 15:18:16,947 - CommonUtilities.Utils - INFO - Transformation for agg  Sales Data completed
+2025-11-21 15:18:16,947 - CommonUtilities.Utils - INFO - Inventory aggregator  summary started 
+2025-11-21 15:18:16,960 - CommonUtilities.Utils - INFO - Inventory aggregator  summary completed
+2025-11-21 15:18:16,960 - CommonUtilities.Utils - INFO - transform_sales_store_product started 
+2025-11-21 15:18:16,975 - CommonUtilities.Utils - INFO - transform_sales_store_product completed
+2025-11-21 15:19:12,086 - CommonUtilities.Utils - INFO - Loading to fact-sales table  started....
+2025-11-21 15:19:12,086 - CommonUtilities.Utils - INFO -  insert into targetdb.fact_sales(sales_id,product_id,store_id,quantity,total_sales,sale_date) select sales_id,product_id,store_id,quantity,total_sales_amount,sale_date from stagedb.sales_with_details
+2025-11-21 15:19:12,089 - CommonUtilities.Utils - INFO - Loading to fact-sales table completed....
+2025-11-21 15:19:12,089 - CommonUtilities.Utils - INFO - Loading to fact_inventory_table  started....
+2025-11-21 15:19:12,089 - CommonUtilities.Utils - INFO - insert into targetdb.fact_inventory (product_id , store_id , quantity_on_hand,last_updated) select product_id , store_id , quantity_on_hand,last_updated  from stagedb.stage_inventories
+2025-11-21 15:19:12,090 - CommonUtilities.Utils - ERROR - error while loading in to target table fact_inventory_table: (pymysql.err.IntegrityError) (1062, "Duplicate entry '101-1' for key 'fact_inventory.PRIMARY'")
+[SQL: insert into targetdb.fact_inventory (product_id , store_id , quantity_on_hand,last_updated) select product_id , store_id , quantity_on_hand,last_updated  from stagedb.stage_inventories]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '101-1' for key 'fact_inventory.PRIMARY'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jiten\PycharmProjects\PythonProject\ETLDEV\data_load.py", line 46, in load_fact_inventory_table
+    conn.execute(text(query))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry '101-1' for key 'fact_inventory.PRIMARY'")
+[SQL: insert into targetdb.fact_inventory (product_id , store_id , quantity_on_hand,last_updated) select product_id , store_id , quantity_on_hand,last_updated  from stagedb.stage_inventories]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-11-21 15:19:12,094 - CommonUtilities.Utils - INFO - Loading to load_fact_monthly_sales_summary  started....
+2025-11-21 15:19:12,094 - CommonUtilities.Utils - INFO - insert into targetdb.fact_monthly_sales_summary (product_id , month , year ,total_sales) select product_id , month , year ,totalsales  from stagedb.monthly_sales_summary
+2025-11-21 15:19:12,095 - CommonUtilities.Utils - ERROR - error while loading in to target table load_fact_monthly_sales_summary: (pymysql.err.IntegrityError) (1062, "Duplicate entry '110-9-2024' for key 'fact_monthly_sales_summary.PRIMARY'")
+[SQL: insert into targetdb.fact_monthly_sales_summary (product_id , month , year ,total_sales) select product_id , month , year ,totalsales  from stagedb.monthly_sales_summary]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '110-9-2024' for key 'fact_monthly_sales_summary.PRIMARY'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jiten\PycharmProjects\PythonProject\ETLDEV\data_load.py", line 34, in load_fact_monthly_sales_summary
+    conn.execute(text(query))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry '110-9-2024' for key 'fact_monthly_sales_summary.PRIMARY'")
+[SQL: insert into targetdb.fact_monthly_sales_summary (product_id , month , year ,total_sales) select product_id , month , year ,totalsales  from stagedb.monthly_sales_summary]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-11-21 15:19:12,096 - CommonUtilities.Utils - INFO - Loading to fact_inventory_levels_by_store  started....
+2025-11-21 15:19:12,096 - CommonUtilities.Utils - INFO - insert into targetdb.inventory_levels_by_store (store_id,total_inventory) select  store_id,total_inventory from stagedb.inventory_agg
+2025-11-21 15:19:12,097 - CommonUtilities.Utils - ERROR - error while loading in to target table fact_inventory_levels_by_store: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1' for key 'inventory_levels_by_store.PRIMARY'")
+[SQL: insert into targetdb.inventory_levels_by_store (store_id,total_inventory) select  store_id,total_inventory from stagedb.inventory_agg]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '1' for key 'inventory_levels_by_store.PRIMARY'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jiten\PycharmProjects\PythonProject\ETLDEV\data_load.py", line 58, in inventory_levels_by_store
+    conn.execute(text(query))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+    ~~~~~~~~~~^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+    ~~~~~~~~~~~^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\jiten\PycharmProjects\PythonProject\.venv\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry '1' for key 'inventory_levels_by_store.PRIMARY'")
+[SQL: insert into targetdb.inventory_levels_by_store (store_id,total_inventory) select  store_id,total_inventory from stagedb.inventory_agg]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
