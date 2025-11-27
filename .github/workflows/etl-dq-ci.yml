@@ -8,28 +8,6 @@ jobs:
   dq-tests:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ROOT_PASSWORD: rootpwd
-          MYSQL_DATABASE: stagedb
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -prootpwd"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=10
-
-    env:
-      # These flow into your Configuration/Config.py
-      MYSQL_HOST: 127.0.0.1
-      MYSQL_PORT: 3306
-      MYSQL_USER: root
-      MYSQL_PASSWORD: rootpwd
-      MYSQL_DATABASE: stagedb
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -39,30 +17,10 @@ jobs:
         with:
           python-version: "3.11"
 
-	- name: Install dependencies
-	  run: |
-	    python -m pip install --upgrade pip
-	    pip install -r TestAutomation/requirements.txt
-
-
-      - name: Wait for MySQL to be ready
+      - name: Install dependencies
         run: |
-          for i in {1..30}; do
-            if mysql -h 127.0.0.1 -P 3306 -uroot -prootpwd -e "SELECT 1;" > /dev/null 2>&1; then
-              echo "MySQL is up!"
-              break
-            fi
-            echo "Waiting for MySQL..."
-            sleep 2
-          done
-
-      - name: Initialize database schema/data
-        run: |
-          # Adjust this to match your SQL script paths
-          # Example: schema + seed data for stag_sales, fact_sales, etc.
-          mysql -h 127.0.0.1 -P 3306 -uroot -prootpwd stagedb < db/schema.sql
-          mysql -h 127.0.0.1 -P 3306 -uroot -prootpwd stagedb < db/testdata.sql
-        shell: bash
+          python -m pip install --upgrade pip
+          pip install -r TestAutomation/requirements.txt
 
       - name: Create folders for reports/logs
         working-directory: TestAutomation
@@ -74,16 +32,15 @@ jobs:
         working-directory: TestAutomation
         run: |
           pytest
-        shell: bash
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
         with:
           name: etl-dq-html-report
-          path: TestReport/etl_dq_report.html
+          path: TestAutomation/TestReport/etl_dq_report.html
 
       - name: Upload log file
         uses: actions/upload-artifact@v4
         with:
           name: etl-dq-log
-          path: LogFile/etljob.log
+          path: TestAutomation/LogFile/etljob.log
