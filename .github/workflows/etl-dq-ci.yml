@@ -40,6 +40,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
+        working-directory: TestAutomation
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
@@ -64,11 +65,13 @@ jobs:
         shell: bash
 
       - name: Create folders for reports/logs
+        working-directory: TestAutomation
         run: |
           mkdir -p TestReport
           mkdir -p LogFile
 
       - name: Run pytest with HTML report
+        working-directory: TestAutomation
         run: |
           pytest
         shell: bash
