@@ -39,11 +39,11 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
-        working-directory: TestAutomation
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+	- name: Install dependencies
+	  run: |
+	    python -m pip install --upgrade pip
+	    pip install -r TestAutomation/requirements.txt
+
 
       - name: Wait for MySQL to be ready
         run: |
